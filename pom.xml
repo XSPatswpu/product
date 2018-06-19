@@ -6,7 +6,12 @@
 	<groupId>com.cherry</groupId>
 	<artifactId>cell</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>product_service</module>
+		<module>product_client</module>
+		<module>product_common</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>cell</name>
 	<description>Demo project for Spring Boot</description>
