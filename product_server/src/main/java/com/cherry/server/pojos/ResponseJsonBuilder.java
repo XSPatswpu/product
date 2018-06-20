@@ -1,6 +1,6 @@
-package com.cherry.cell.pojos;
+package com.cherry.server.pojos;
 
-import com.cherry.cell.enums.StatusEnum;
+import com.cherry.server.enums.StatusEnum;
 
 /**
  * Description:

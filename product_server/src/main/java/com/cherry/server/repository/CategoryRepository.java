@@ -1,6 +1,6 @@
-package com.cherry.cell.repository;
+package com.cherry.server.repository;
 
-import com.cherry.cell.entity.ProductCategory;
+import com.cherry.server.entity.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

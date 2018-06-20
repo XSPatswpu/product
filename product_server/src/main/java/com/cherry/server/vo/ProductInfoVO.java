@@ -1,4 +1,4 @@
-package com.cherry.cell.vo;
+package com.cherry.server.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.cherry.cell.entity;
+package com.cherry.server.entity;
 
 import lombok.Data;
 

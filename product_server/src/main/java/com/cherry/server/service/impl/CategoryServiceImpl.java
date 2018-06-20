@@ -1,8 +1,8 @@
-package com.cherry.cell.service.impl;
+package com.cherry.server.service.impl;
 
-import com.cherry.cell.entity.ProductCategory;
-import com.cherry.cell.repository.CategoryRepository;
-import com.cherry.cell.service.CategoryService;
+import com.cherry.server.entity.ProductCategory;
+import com.cherry.server.repository.CategoryRepository;
+import com.cherry.server.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

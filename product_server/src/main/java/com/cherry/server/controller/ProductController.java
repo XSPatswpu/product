@@ -1,13 +1,13 @@
-package com.cherry.cell.controller;
+package com.cherry.server.controller;
 
-import com.cherry.cell.entity.ProductCategory;
-import com.cherry.cell.entity.ProductInfo;
-import com.cherry.cell.pojos.ResponseJson;
-import com.cherry.cell.pojos.ResponseJsonBuilder;
-import com.cherry.cell.service.CategoryService;
-import com.cherry.cell.service.ProductService;
-import com.cherry.cell.vo.ProductCategoryVO;
-import com.cherry.cell.vo.ProductInfoVO;
+import com.cherry.server.entity.ProductCategory;
+import com.cherry.server.entity.ProductInfo;
+import com.cherry.server.pojos.ResponseJson;
+import com.cherry.server.pojos.ResponseJsonBuilder;
+import com.cherry.server.service.CategoryService;
+import com.cherry.server.service.ProductService;
+import com.cherry.server.vo.ProductCategoryVO;
+import com.cherry.server.vo.ProductInfoVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.cherry.cell.service;
+package com.cherry.server.service;
 
-import com.cherry.cell.entity.ProductCategory;
+import com.cherry.server.entity.ProductCategory;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.cherry.cell.enums;
+package com.cherry.server.enums;
 
 import lombok.Getter;
 

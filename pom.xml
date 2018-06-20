@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cherry</groupId>
-	<artifactId>cell</artifactId>
+	<artifactId>product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>product_service</module>
+		<module>product_server</module>
 		<module>product_client</module>
 		<module>product_common</module>
 	</modules>
 	<packaging>pom</packaging>
 
-	<name>cell</name>
+	<name>product</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -28,44 +28,11 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.RC2</spring-cloud.version>
+		<product-common.version>0.0.1-SNAPSHOT</product-common.version>
+		<cherry-lombok.version>1.16.14</cherry-lombok.version>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!--data-jpa-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.28</version>
-		</dependency>
-
-		<!--lombok插件-->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.14</version>
-		</dependency>
-	</dependencies>
-
+	<!--该标签只表示依赖的版本管理，并不会引入依赖。子模块中引入依赖不写版本号，会继承此处定义的版本号-->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -75,17 +42,22 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<!--管理product_common的版本号-->
+			<dependency>
+				<artifactId>product_common</artifactId>
+				<groupId>com.cherry</groupId>
+				<version>${product-common.version}</version>
+			</dependency>
+
+			<!--lombok插件-->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${cherry-lombok.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 	<repositories>
 		<repository>
