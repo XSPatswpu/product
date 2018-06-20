@@ -1,6 +1,6 @@
-product_client/target/
-product_common/target/
-product_server/target/
+client/target/
+common/target/
+server/target/
 
 ### STS ###
 .apt_generated
