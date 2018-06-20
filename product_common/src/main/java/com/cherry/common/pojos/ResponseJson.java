@@ -1,4 +1,4 @@
-package com.cherry.server.pojos;
+package com.cherry.common.pojos;
 
 import lombok.Data;
 

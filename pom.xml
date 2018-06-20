@@ -30,6 +30,7 @@
 		<spring-cloud.version>Finchley.RC2</spring-cloud.version>
 		<product-common.version>0.0.1-SNAPSHOT</product-common.version>
 		<cherry-lombok.version>1.16.14</cherry-lombok.version>
+		<cherry-mysql.version>5.1.28</cherry-mysql.version>
 	</properties>
 
 	<!--该标签只表示依赖的版本管理，并不会引入依赖。子模块中引入依赖不写版本号，会继承此处定义的版本号-->
@@ -55,6 +56,12 @@
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${cherry-lombok.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${cherry-mysql.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
