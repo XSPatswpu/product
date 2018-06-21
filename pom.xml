@@ -7,9 +7,9 @@
 	<artifactId>product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>product_server</module>
-		<module>product_client</module>
-		<module>product_common</module>
+		<module>server</module>
+		<module>client</module>
+		<module>common</module>
 	</modules>
 	<packaging>pom</packaging>
 
