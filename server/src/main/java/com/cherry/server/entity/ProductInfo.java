@@ -18,8 +18,8 @@ public class ProductInfo {
     @Id
     private String productId;
     private String productName;
-    private BigDecimal productPrice;
-    private Integer productStock;
+    private BigDecimal productPrice;//商品单价
+    private Integer productStock;//商品库存
     private String productDescription;
     private String productIcon;
     private Integer productStatus;//商品状态 0-正常，1-下架

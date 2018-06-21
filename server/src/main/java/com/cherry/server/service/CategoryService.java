@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface CategoryService {
     /**
-     * 根据类目编号集合查询所有的类目编号
+     * 根据类目编号集合查询所有的类目集合
      * @param categoryTypeList 类目编号集合
      * @return 类目集合
      */

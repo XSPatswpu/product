@@ -1,5 +1,6 @@
 package com.cherry.server.controller;
 
+import com.cherry.common.enums.StatusEnum;
 import com.cherry.common.pojos.ResponseJson;
 import com.cherry.common.pojos.ResponseJsonBuilder;
 import com.cherry.server.entity.ProductCategory;
@@ -12,10 +13,9 @@ import com.cherry.server.vo.ProductInfoVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -63,12 +63,7 @@ public class ProductController {
 
                 List<ProductInfoVO> productVOs = productInfos.stream()
                         .filter(e -> e.getCategoryType() == categoryVO.getCategoryType())
-                        .map(e -> {
-                            ProductInfoVO productInfoVO = new ProductInfoVO();
-                            BeanUtils.copyProperties(e, productInfoVO);
-                            return productInfoVO;
-                        })
-                        .collect(Collectors.toList());
+                        .map(this::convert).collect(Collectors.toList());
                 categoryVO.setProductInfoVOList(productVOs);
 
                 categoryVOs.add(categoryVO);
@@ -79,5 +74,30 @@ public class ProductController {
             return ResponseJsonBuilder.createFailOfSystem(ex.getMessage());
         }
         return ResponseJsonBuilder.createSuccess(categoryVOs);
+    }
+
+    /**
+     * 根据商品id集合查询商品信息（给订单服务调用）
+     * @param productIds 商品id集合
+     */
+    @PostMapping("/listForOrder")
+    public ResponseJson productListForOrder(@RequestBody List<String> productIds){
+        log.info("/product/listForOrder:{}",productIds);
+
+        try{
+            List<ProductInfo> productInfos = productService.findByProductIds(productIds);
+            List<ProductInfoVO> productInfoVOs = productInfos.stream().map(this::convert).collect(Collectors.toList());
+            return ResponseJsonBuilder.createSuccess(productInfoVOs);
+        }catch (RuntimeException ex){
+            log.warn(StatusEnum.SERVICE_EXCEPTION.getMsg(),ex);
+            return ResponseJsonBuilder.createFailOfService(StatusEnum.SERVICE_EXCEPTION.getMsg());
+        }
+
+    }
+
+    private ProductInfoVO convert(ProductInfo productInfo){
+        ProductInfoVO productInfoVO = new ProductInfoVO();
+        BeanUtils.copyProperties(productInfo, productInfoVO);
+        return productInfoVO;
     }
 }

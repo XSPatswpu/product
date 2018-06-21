@@ -1,6 +1,5 @@
 package com.cherry.server.service.impl;
 
-import com.cherry.server.entity.ProductCategory;
 import com.cherry.server.entity.ProductInfo;
 import com.cherry.server.repository.ProductRepository;
 import com.cherry.server.service.ProductService;
@@ -23,6 +22,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductInfo> findUpProducts(Integer status) {
         return productRepository.findByProductStatus(status);
+    }
+
+    @Override
+    public List<ProductInfo> findByProductIds(List<String> productIds) {
+        return productRepository.findByProductIdIn(productIds);
     }
 
 }
