@@ -1,5 +1,6 @@
 package com.cherry.product.service;
 
+import com.cherry.product.dto.DecreaseStockDTO;
 import com.cherry.product.entity.ProductInfo;
 
 import java.util.List;
@@ -23,4 +24,12 @@ public interface ProductService {
      * @return 商品信息集合
      */
     List<ProductInfo> findByProductIds(List<String> productIds);
+
+    /**
+     * 减库存
+     * @param decreaseStocks 减库存传输对象
+     * @return 减完库存后的商品集合
+     */
+    List<ProductInfo> decreaseStock(List<DecreaseStockDTO> decreaseStocks);
+
 }

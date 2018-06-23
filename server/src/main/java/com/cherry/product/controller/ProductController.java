@@ -1,5 +1,6 @@
 package com.cherry.product.controller;
 
+import com.cherry.product.dto.DecreaseStockDTO;
 import com.cherry.product.dto.ProductInfoDTO;
 import com.cherry.product.enums.StatusEnum;
 import com.cherry.product.pojos.ResponseJson;
@@ -85,13 +86,26 @@ public class ProductController {
         log.info("/product/listForOrder:{}",productIds);
 
         try{
-            List<ProductInfo> productInfos = productService.findByProductIds(productIds);
-            return productInfos.stream().map(this::convert2DTO).collect(Collectors.toList());
+            List<ProductInfo> productInfoList = productService.findByProductIds(productIds);
+            return productInfoList.stream().map(this::convert2DTO).collect(Collectors.toList());
         }catch (RuntimeException ex){
             log.warn(StatusEnum.SERVICE_EXCEPTION.getMsg(),ex);
             return null;
         }
 
+    }
+
+    /**
+     * 扣库存操作（给订单服务调用）
+     * @param decreaseStockDTOList decreaseStockDTOList
+     * @return 扣完库存后的商品集合
+     */
+    @PostMapping("/decreaseForOrder")
+    public List<ProductInfoDTO> decreaseStockForOrder(@RequestBody List<DecreaseStockDTO> decreaseStockDTOList){
+        log.info("/product/decreaseForOrder:{}",decreaseStockDTOList);
+        List<ProductInfoDTO> productInfoDTOList = productService.decreaseStock(decreaseStockDTOList).stream()
+                .map(this::convert2DTO).collect(Collectors.toList());
+        return productInfoDTOList;
     }
 
     /**

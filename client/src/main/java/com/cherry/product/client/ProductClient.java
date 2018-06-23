@@ -1,5 +1,6 @@
 package com.cherry.product.client;
 
+import com.cherry.product.dto.DecreaseStockDTO;
 import com.cherry.product.dto.ProductInfoDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,5 +16,8 @@ import java.util.List;
 @FeignClient(name = "product")
 public interface ProductClient {
     @PostMapping("/product/listForOrder")
-    List<ProductInfoDTO> findProduct(@RequestBody  List<String> productIds);
+    List<ProductInfoDTO> findProduct(@RequestBody List<String> productIds);
+
+    @PostMapping("/product/decreaseForOrder")
+    List<ProductInfoDTO> decreaseStockForOrder(@RequestBody List<DecreaseStockDTO> decreaseStockDTOList);
 }

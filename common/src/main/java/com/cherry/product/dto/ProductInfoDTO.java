@@ -16,7 +16,7 @@ public class ProductInfoDTO {
     private BigDecimal productPrice;
     private String productDescription;
     private String productIcon;
-    private String productStock;
+    private Integer productStock;
     private Integer categoryType;//类目编号
     private Integer productStatus;
 }
